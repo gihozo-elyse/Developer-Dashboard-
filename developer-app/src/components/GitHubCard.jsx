@@ -103,7 +103,7 @@ function GitHubCard(props) {
           <div className="flex items-center gap-3">
             <div className="text-center min-w-[80px]">
               <p className={`text-3xl md:text-4xl font-bold ${
-                props.isDarkMode ? 'text-blue-400' : 'text-blue-600'
+                props.isDarkMode ? 'text-yellow-400' : 'text-yellow-600'
               }`}>{userData.public_repos}</p>
               <p className={`text-sm mt-1 ${
                 props.isDarkMode ? 'text-gray-400' : 'text-gray-600'
@@ -114,7 +114,7 @@ function GitHubCard(props) {
           <div className="flex items-center gap-3">
             <div className="text-center min-w-[80px]">
               <p className={`text-3xl md:text-4xl font-bold ${
-                props.isDarkMode ? 'text-blue-400' : 'text-blue-600'
+                props.isDarkMode ? 'text-yellow-400' : 'text-yellow-600'
               }`}>{userData.followers}</p>
               <p className={`text-sm mt-1 ${
                 props.isDarkMode ? 'text-gray-400' : 'text-gray-600'
@@ -125,7 +125,7 @@ function GitHubCard(props) {
           <div className="flex items-center gap-3">
             <div className="text-center min-w-[80px]">
               <p className={`text-3xl md:text-4xl font-bold ${
-                props.isDarkMode ? 'text-blue-400' : 'text-blue-600'
+                props.isDarkMode ? 'text-yellow-400' : 'text-yellow-600'
               }`}>{userData.following}</p>
               <p className={`text-sm mt-1 ${
                 props.isDarkMode ? 'text-gray-400' : 'text-gray-600'
