@@ -18,7 +18,7 @@ function GitHubCard(props) {
       setError(null)
 
      
-      const username = props.username || 'octocat'
+      const username = props.username || 'gihozo-elyse'
       
      
       fetch(`https://api.github.com/users/${username}`)
