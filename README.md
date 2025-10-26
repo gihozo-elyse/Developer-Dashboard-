@@ -93,4 +93,6 @@ developer-app/
 
 
 
-*
+## Live Demo
+Check out the project live here: [Developer Dashboard](https://developer-dashboard-ezbv.vercel.app/)
+
