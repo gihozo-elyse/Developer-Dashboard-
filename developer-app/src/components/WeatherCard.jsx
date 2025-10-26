@@ -11,9 +11,9 @@ function WeatherCard(props) {
   
   const [currentTime, setCurrentTime] = React.useState('')
 
-
+  
   React.useEffect(function() {
-    
+   
     function updateTime() {
       const now = new Date()
       const hours = now.getHours()
@@ -24,7 +24,6 @@ function WeatherCard(props) {
       setCurrentTime(`${displayHours}:${displayMinutes} ${ampm}`)
     }
 
-    
     updateTime()
     
     
@@ -38,11 +37,12 @@ function WeatherCard(props) {
 
   
   React.useEffect(function() {
-    
+   
     function fetchWeatherData() {
       setLoading(true)
       setError(null)
 
+      
       const latitude = props.latitude || 51.5074
       const longitude = props.longitude || -0.1278
       
@@ -64,7 +64,7 @@ function WeatherCard(props) {
         })
     }
 
-   
+    // Call the fetch function
     fetchWeatherData()
   }, [props.latitude, props.longitude])
 
@@ -96,7 +96,7 @@ function WeatherCard(props) {
     )
   }
 
- 
+  
   if (error) {
     return (
       <div className={`rounded-2xl p-8 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
@@ -112,7 +112,7 @@ function WeatherCard(props) {
     )
   }
 
-  
+ 
   return (
     <div className={`rounded-2xl p-8 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
       props.isDarkMode ? 'bg-gray-800 shadow-black/30' : 'bg-white shadow-black/10'
@@ -122,7 +122,7 @@ function WeatherCard(props) {
       }`}>Current Weather</h2>
       
       <div className="flex flex-col items-center gap-6">
-        
+      
         <div className="w-24 h-24">
           <svg 
             className="w-full h-full text-amber-400" 
@@ -143,7 +143,7 @@ function WeatherCard(props) {
           </svg>
         </div>
 
-       
+        
         <div className={`text-6xl md:text-7xl font-bold ${
           props.isDarkMode ? 'text-gray-100' : 'text-gray-900'
         }`}>
@@ -151,6 +151,47 @@ function WeatherCard(props) {
         </div>
 
         
+        <div className="w-full flex flex-col gap-3">
+          <div className={`flex justify-between py-2 border-b ${
+            props.isDarkMode ? 'border-gray-700' : 'border-gray-300'
+          }`}>
+            <span className={`font-semibold ${
+              props.isDarkMode ? 'text-gray-400' : 'text-gray-600'
+            }`}>Condition:</span>
+            <span className={`font-medium ${
+              props.isDarkMode ? 'text-gray-100' : 'text-gray-900'
+            }`}>
+              {getWeatherDescription(weatherData.weathercode)}
+            </span>
+          </div>
+          
+          <div className={`flex justify-between py-2 border-b ${
+            props.isDarkMode ? 'border-gray-700' : 'border-gray-300'
+          }`}>
+            <span className={`font-semibold ${
+              props.isDarkMode ? 'text-gray-400' : 'text-gray-600'
+            }`}>Wind:</span>
+            <span className={`font-medium ${
+              props.isDarkMode ? 'text-gray-100' : 'text-gray-900'
+            }`}>
+              {Math.round(weatherData.windspeed)} mph
+            </span>
+          </div>
+          
+          <div className={`flex justify-between py-2 border-b ${
+            props.isDarkMode ? 'border-gray-700' : 'border-gray-300'
+          }`}>
+            <span className={`font-semibold ${
+              props.isDarkMode ? 'text-gray-400' : 'text-gray-600'
+            }`}>Time:</span>
+            <span className={`font-medium ${
+              props.isDarkMode ? 'text-gray-100' : 'text-gray-900'
+            }`}>{currentTime}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
 }
 
 export default WeatherCard
