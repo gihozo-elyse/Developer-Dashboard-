@@ -86,9 +86,11 @@ developer-app/
 
 
 ### Light Mode
-![Dashboard Light Mode](./screenshots/light-mode.png)
+![Light Mode](./public/whitemode.png)
 
 ### Dark Mode
-![Dashboard Dark Mode](./screenshots/dark-mode.png)
+![Dark Mode](./public/darkmode.png)
+
+
 
 *
