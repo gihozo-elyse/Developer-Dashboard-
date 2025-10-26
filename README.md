@@ -86,10 +86,10 @@ developer-app/
 
 
 ### Light Mode
-![Light Mode](./public/whitemode.png)
+![alt text](developer-app/public/whitemode.png)
 
 ### Dark Mode
-![Dark Mode](./public/darkmode.png)
+![alt text](developer-app/public/darkmode.png)
 
 
 
