@@ -1,19 +1,13 @@
 import React from 'react'
 
 
-function WeatherCard(props) {
-  
+function WeatherCard({ latitude = 51.5074, longitude = -0.1278, isDarkMode }) {
   const [weatherData, setWeatherData] = React.useState(null)
-  
   const [loading, setLoading] = React.useState(true)
-  
   const [error, setError] = React.useState(null)
-  
   const [currentTime, setCurrentTime] = React.useState('')
 
-  
   React.useEffect(function() {
-   
     function updateTime() {
       const now = new Date()
       const hours = now.getHours()
@@ -25,27 +19,17 @@ function WeatherCard(props) {
     }
 
     updateTime()
-    
-    
     const timeInterval = setInterval(updateTime, 1000)
 
-    
     return function() {
       clearInterval(timeInterval)
     }
   }, [])
 
-  
   React.useEffect(function() {
-   
     function fetchWeatherData() {
       setLoading(true)
       setError(null)
-
-      
-      const latitude = props.latitude || 51.5074
-      const longitude = props.longitude || -0.1278
-      
       
       fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`)
         .then(function(response) {
@@ -66,7 +50,7 @@ function WeatherCard(props) {
 
     // Call the fetch function
     fetchWeatherData()
-  }, [props.latitude, props.longitude])
+  }, [latitude, longitude])
 
   
   function getWeatherDescription(code) {
@@ -84,13 +68,13 @@ function WeatherCard(props) {
   if (loading) {
     return (
       <div className={`rounded-2xl p-8 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
-        props.isDarkMode ? 'bg-gray-800 shadow-black/30' : 'bg-white shadow-black/10'
+        isDarkMode ? 'bg-gray-800 shadow-black/30' : 'bg-white shadow-black/10'
       }`}>
         <h2 className={`text-2xl font-bold mb-6 ${
-          props.isDarkMode ? 'text-gray-100' : 'text-gray-900'
+          isDarkMode ? 'text-gray-100' : 'text-gray-900'
         }`}>Current Weather</h2>
         <p className={`text-center py-8 ${
-          props.isDarkMode ? 'text-gray-400' : 'text-gray-600'
+          isDarkMode ? 'text-gray-400' : 'text-gray-600'
         }`}>Loading...</p>
       </div>
     )
@@ -100,13 +84,13 @@ function WeatherCard(props) {
   if (error) {
     return (
       <div className={`rounded-2xl p-8 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
-        props.isDarkMode ? 'bg-gray-800 shadow-black/30' : 'bg-white shadow-black/10'
+        isDarkMode ? 'bg-gray-800 shadow-black/30' : 'bg-white shadow-black/10'
       }`}>
         <h2 className={`text-2xl font-bold mb-6 ${
-          props.isDarkMode ? 'text-gray-100' : 'text-gray-900'
+          isDarkMode ? 'text-gray-100' : 'text-gray-900'
         }`}>Current Weather</h2>
         <p className={`text-center py-8 ${
-          props.isDarkMode ? 'text-red-400' : 'text-red-600'
+          isDarkMode ? 'text-red-400' : 'text-red-600'
         }`}>Error: {error}</p>
       </div>
     )
@@ -115,10 +99,10 @@ function WeatherCard(props) {
  
   return (
     <div className={`rounded-2xl p-8 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
-      props.isDarkMode ? 'bg-gray-800 shadow-black/30' : 'bg-white shadow-black/10'
+      isDarkMode ? 'bg-gray-800 shadow-black/30' : 'bg-white shadow-black/10'
     }`}>
       <h2 className={`text-2xl font-bold mb-6 ${
-        props.isDarkMode ? 'text-gray-100' : 'text-gray-900'
+        isDarkMode ? 'text-gray-200' : 'text-gray-500'
       }`}>Current Weather</h2>
       
       <div className="flex flex-col items-center gap-6">
@@ -145,7 +129,7 @@ function WeatherCard(props) {
 
         
         <div className={`text-6xl md:text-7xl font-bold ${
-          props.isDarkMode ? 'text-gray-100' : 'text-gray-900'
+          isDarkMode ? 'text-gray-100' : 'text-gray-900'
         }`}>
           {Math.round(weatherData.temperature)}°
         </div>
@@ -153,39 +137,39 @@ function WeatherCard(props) {
         
         <div className="w-full flex flex-col gap-3">
           <div className={`flex justify-between py-2 border-b ${
-            props.isDarkMode ? 'border-gray-700' : 'border-gray-300'
+            isDarkMode ? 'border-gray-700' : 'border-gray-300'
           }`}>
             <span className={`font-semibold ${
-              props.isDarkMode ? 'text-gray-400' : 'text-gray-600'
+                isDarkMode ? 'text-yellow-400' : 'text-yellow-600'
             }`}>Condition:</span>
             <span className={`font-medium ${
-              props.isDarkMode ? 'text-gray-100' : 'text-gray-900'
+              isDarkMode ? 'text-gray-100' : 'text-gray-900'
             }`}>
               {getWeatherDescription(weatherData.weathercode)}
             </span>
           </div>
           
           <div className={`flex justify-between py-2 border-b ${
-            props.isDarkMode ? 'border-gray-700' : 'border-gray-300'
+            isDarkMode ? 'border-gray-700' : 'border-gray-300'
           }`}>
             <span className={`font-semibold ${
-              props.isDarkMode ? 'text-gray-400' : 'text-gray-600'
+                isDarkMode ? 'text-yellow-400' : 'text-yellow-600'
             }`}>Wind:</span>
             <span className={`font-medium ${
-              props.isDarkMode ? 'text-gray-100' : 'text-gray-900'
+              isDarkMode ? 'text-gray-100' : 'text-gray-900'
             }`}>
               {Math.round(weatherData.windspeed)} mph
             </span>
           </div>
           
           <div className={`flex justify-between py-2 border-b ${
-            props.isDarkMode ? 'border-gray-700' : 'border-gray-300'
+            isDarkMode ? 'border-gray-700' : 'border-gray-300'
           }`}>
             <span className={`font-semibold ${
-              props.isDarkMode ? 'text-gray-400' : 'text-gray-600'
+                isDarkMode ? 'text-yellow-400' : 'text-yellow-600'
             }`}>Time:</span>
             <span className={`font-medium ${
-              props.isDarkMode ? 'text-gray-100' : 'text-gray-900'
+              isDarkMode ? 'text-gray-100' : 'text-gray-900'
             }`}>{currentTime}</span>
           </div>
         </div>
