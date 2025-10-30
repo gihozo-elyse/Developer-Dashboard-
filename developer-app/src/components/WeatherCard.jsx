@@ -108,24 +108,22 @@ function WeatherCard({ latitude = 51.5074, longitude = -0.1278, isDarkMode }) {
       <div className="flex flex-col items-center gap-6">
       
         <div className="w-24 h-24">
-          <svg 
-            className="w-full h-full text-amber-400" 
-            fill="none" 
-            stroke="currentColor" 
-            viewBox="0 0 24 24"
-            strokeWidth="2"
-          >
-            <circle cx="12" cy="12" r="5" strokeWidth="2" />
-            <line x1="12" y1="1" x2="12" y2="3" strokeWidth="2" />
-            <line x1="12" y1="21" x2="12" y2="23" strokeWidth="2" />
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" strokeWidth="2" />
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" strokeWidth="2" />
-            <line x1="1" y1="12" x2="3" y2="12" strokeWidth="2" />
-            <line x1="21" y1="12" x2="23" y2="12" strokeWidth="2" />
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" strokeWidth="2" />
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" strokeWidth="2" />
-          </svg>
-        </div>
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    className="w-full h-full text-amber-400" 
+    fill="none" 
+    viewBox="0 0 24 24" 
+    stroke="currentColor" 
+    strokeWidth={2}
+  >
+    <path 
+      strokeLinecap="round" 
+      strokeLinejoin="round" 
+      d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.364-6.364l-1.414 1.414M6.05 17.95l-1.414 1.414M18.364 18.364l-1.414-1.414M6.05 6.05L4.636 4.636M12 7a5 5 0 100 10 5 5 0 000-10z" 
+    />
+  </svg>
+  
+</div>
 
         
         <div className={`text-6xl md:text-7xl font-bold ${
